@@ -16,6 +16,7 @@ describe('Library', function() {
         assert(builder.IntentDialog);
         assert(builder.IntentGroup);
         assert(builder.LuisDialog);
+        assert(builder.WitDialog);
         assert(builder.CommandDialog);
         assert(builder.EntityRecognizer);
         assert(builder.MemoryStorage);

@@ -1462,6 +1462,36 @@ export class LuisDialog extends IntentDialog {
     static recognize(utterance: string, serviceUri: string, callback: (err: Error, intents?: IIntent[], entities?: IEntity[]) => void): void;
 }
 
+
+export class WitDialog extends IntentDialog {
+    /**
+     * Creates a new instance of a LUIS dialog.
+     * @param serviceUri URI for LUIS App hosted on http://luis.ai.
+     */
+    constructor(serviceUri: string);
+
+    /**
+     * Performs the step of recognizing intents & entities when a message is recieved by the dialog. Called by IntentDialog.
+     * @param session Session object for the current conversation.
+     * @param callback Callback to invoke with the results of the intent recognition step.
+     * @param callback.err Error that occured during the recognition step.
+     * @param callback.intents List of intents that were recognized.
+     * @param callback.entities List of entities that were recognized.
+     */
+    protected recognizeIntents(session: Session, callback: (err: Error, intents?: IIntent[], entities?: IEntity[]) => void): void;
+
+    /**
+     * Calls LUIS to recognizing intents & entities in a users utterance.
+     * @param utterance The text to pass to LUIS for recognition.
+     * @param serviceUri URI for LUIS App hosted on http://luis.ai.
+     * @param callback Callback to invoke with the results of the intent recognition step.
+     * @param callback.err Error that occured during the recognition step.
+     * @param callback.intents List of intents that were recognized.
+     * @param callback.entities List of entities that were recognized.
+     */
+    static recognize(utterance: string, serviceUri: string, callback: (err: Error, intents?: IIntent[], entities?: IEntity[]) => void): void;
+}
+
 /**
  * Utility class used to parse & resolve common entities like datetimes received from LUIS.
  */
